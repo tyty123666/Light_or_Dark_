@@ -2,6 +2,16 @@ using UnityEngine;
 
 public class cokol : MonoBehaviour
 {
+    public bool i = false;
+    public float x;
+    public float y;
+    public float z;
+    public float z1;
+
+    private Transform cokol11;
+    public GameObject collider0;
+     public GameObject collider1;
+    public GameObject Player;
     private bool Key_Code = false;
     public GameObject obvodka;
     public bool q1 = false;
@@ -21,7 +31,42 @@ public class cokol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        cokol11 = GameObject.Find("cokol").transform;
+        if (i)
+        {
+            Player.transform.position = cokol11.TransformPoint(x, y, z);
+            collider0.SetActive(false);
+            collider1.SetActive(false);
+        }
+        
+        else
+        {
+            collider0.SetActive(true);
+            collider1.SetActive(true);
+           
+        }
+      
+           
+          
+        
+                    
+if (Key_Code)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (i)
+                {
+                    i = false;
+                     Player.transform.position = cokol11.TransformPoint(x, y, z1);
+                }
+                if (i == false)
+                {
+                    i = true;
+                }
+                //Player.transform.position = cokol11.TransformPoint(0, 0, 0);
 
+            }
+        }
         if (Input.GetKeyDown(KeyCode.D))
         {
             Vector2 jumpVelocityToAdd = new Vector2(sila, 0f);
@@ -42,8 +87,10 @@ public class cokol : MonoBehaviour
     {
         if (other.gameObject.name == "Player")
         {
+            Key_Code = true;
             q1 = true;
             obvodka.SetActive(true);
+            
         }
     }
     
@@ -51,6 +98,7 @@ public class cokol : MonoBehaviour
     {
         if (other.gameObject.name == "Player")
         {
+            Key_Code = false;
             q1 = true;
             obvodka.SetActive(false);
         }
