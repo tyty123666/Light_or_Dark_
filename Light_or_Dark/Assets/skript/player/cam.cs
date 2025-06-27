@@ -7,6 +7,7 @@ public class cam : MonoBehaviour {
 	public float minDistance;
 	public float followDistance;
 	public GameObject target;
+	//public GameObject target;
 	public Vector3 offset;
 	Vector3 targetPos;
 	// Use this for initialization
