@@ -21,6 +21,7 @@ public class cokol : MonoBehaviour
     public float q = 0;
     public float max_q = 100;
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,9 +32,20 @@ public class cokol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    bool w = false;
+    if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (i == true)
+                {
+                    i = false;
+                    // Player.transform.position = cokol11.TransformPoint(x, y, z1);
+                }
+                
+}
         cokol11 = GameObject.Find("cokol").transform;
         if (i)
         {
+w = true;
             Player.transform.position = cokol11.TransformPoint(x, y, z);
             collider0.SetActive(false);
             collider1.SetActive(false);
@@ -41,7 +53,16 @@ public class cokol : MonoBehaviour
         
         else
         {
-            collider0.SetActive(true);
+
+        if (w == true)
+        {
+            Player.transform.position = cokol11.TransformPoint(x, y, -7);
+        }
+            w = false;
+        
+
+
+                    collider0.SetActive(true);
             collider1.SetActive(true);
            
         }
@@ -52,20 +73,14 @@ public class cokol : MonoBehaviour
                     
 if (Key_Code)
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                if (i)
-                {
-                    i = false;
-                     Player.transform.position = cokol11.TransformPoint(x, y, z1);
-                }
+            
                 if (i == false)
                 {
                     i = true;
                 }
                 //Player.transform.position = cokol11.TransformPoint(0, 0, 0);
 
-            }
+            
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
